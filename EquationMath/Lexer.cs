@@ -49,6 +49,7 @@ namespace EquationMath
 
 		private static bool IsTerm(char c, StringBuilder termBuffer) =>
 			char.IsLetter(c) || termBuffer.Length > 0 && (IsDigit(c) || c == '^' && termBuffer[termBuffer.Length - 1] != '^');
+
 		private static bool IsDigit(char c) => c >= '0' && c <= '9';
 		private static bool IsOperator(char c) => c == '+' || c == '-' || c == '=';
 

@@ -2,11 +2,11 @@
 
 namespace EquationMath.Test
 {
-    public class TermStringifierTest
-    {
-	    [Fact]
-	    public void SimpleStringify()
-	    {
+	public class TermStringifierTest
+	{
+		[Fact]
+		public void SimpleStringify()
+		{
 			IToken[] tokens =
 			{
 				new Term(1, "x^2"),
@@ -20,11 +20,11 @@ namespace EquationMath.Test
 				new Term(0, string.Empty)
 			};
 
-		    const string expected = "x^2-y^2+4.5xy-2=0";
+			const string expected = "x^2-y^2+4.5xy-2=0";
 
-		    var stringifier = new TermStringifier();
-		    string result = stringifier.Stringify(tokens);
-		    Assert.Equal(expected, result);
-	    }
+			var stringifier = new TermStringifier();
+			string result = stringifier.Stringify(tokens);
+			Assert.Equal(expected, result);
+		}
 	}
 }

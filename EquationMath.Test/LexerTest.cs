@@ -34,7 +34,7 @@ namespace EquationMath.Test
 
 			Assert.Equal(expected, tokens);
 		}
-		
+
 		[Fact]
 		public void ParsingError()
 		{

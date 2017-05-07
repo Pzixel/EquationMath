@@ -5,18 +5,18 @@ using System.Text;
 
 namespace EquationMath
 {
-    public class TermStringifier
-    {
-	    public string Stringify(IEnumerable<IToken> tokens)
-	    {
+	public class TermStringifier
+	{
+		public string Stringify(IEnumerable<IToken> tokens)
+		{
 			var sb = new StringBuilder();
-		    foreach (var token in tokens)
-		    {
-			    switch (token)
-			    {
-				    case LeftParenthesis _:
-					    sb.Append('(');
-					    break;
+			foreach (var token in tokens)
+			{
+				switch (token)
+				{
+					case LeftParenthesis _:
+						sb.Append('(');
+						break;
 					case RightParenthesis _:
 						sb.Append(')');
 						break;
@@ -30,9 +30,9 @@ namespace EquationMath
 						break;
 					default:
 						throw new InvalidOperationException($"Unknown term of type {token.GetType()}");
-			    }
-		    }
-		    return sb.ToString();
-	    }
-    }
+				}
+			}
+			return sb.ToString();
+		}
+	}
 }
