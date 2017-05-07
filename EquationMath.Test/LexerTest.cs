@@ -36,11 +36,27 @@ namespace EquationMath.Test
 		}
 
 		[Fact]
-		public void ParsingError()
+		public void ParsingErrorInvalidPower()
 		{
 			var lexer = new Lexer();
 			var argumentException = Assert.Throws<ArgumentException>("input", () => lexer.Tokenize("2x^^2").ToArray());
 			Assert.Contains("Parsing error on symbol '^'", argumentException.Message);
+		}
+
+		[Fact]
+		public void ParsingErrorHasNoOperand()
+		{
+			var lexer = new Lexer();
+			var argumentException = Assert.Throws<ArgumentException>("input", () => lexer.Tokenize("2x-=0").ToArray());
+			Assert.Contains("Expected operand but found operator '='", argumentException.Message);
+		}
+
+		[Fact]
+		public void ParsingErrorHasNoOperandAndParanthesis()
+		{
+			var lexer = new Lexer();
+			var argumentException = Assert.Throws<ArgumentException>("input", () => lexer.Tokenize("(2x-)=0").ToArray());
+			Assert.Contains("Expected operand but found operator '='", argumentException.Message);
 		}
 
 		[Fact]

@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 namespace EquationMath.Test
@@ -35,6 +36,36 @@ namespace EquationMath.Test
 			var result = parenthesisRemover.RemoveParenthesis(tokens);
 
 			Assert.Equal(expected, result);
+		}
+
+		[Fact]
+		public void TooManyBracesError()
+		{
+			IToken[] tokens =
+			{
+				new LeftParenthesis(),
+				new LeftParenthesis(),
+				new RightParenthesis()
+			};
+
+			var parenthesisRemover = new ParenthesisRemover();
+			var exception = Assert.Throws<InvalidOperationException>(() => parenthesisRemover.RemoveParenthesis(tokens));
+			Assert.Equal("1 left parenthesis are not balanced", exception.Message);
+		}
+
+		[Fact]
+		public void NotEnoughBracesError()
+		{
+			IToken[] tokens =
+			{
+				new LeftParenthesis(),
+				new RightParenthesis(),
+				new RightParenthesis()
+			};
+
+			var parenthesisRemover = new ParenthesisRemover();
+			var exception = Assert.Throws<InvalidOperationException>(() => parenthesisRemover.RemoveParenthesis(tokens));
+			Assert.Contains("Right parenthesis is placed before the left one", exception.Message);
 		}
 	}
 }

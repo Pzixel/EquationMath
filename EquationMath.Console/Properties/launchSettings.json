@@ -1,8 +1,7 @@
 {
   "profiles": {
     "EquationMath.Console": {
-      "commandName": "Project",
-      "commandLineArgs": "C:\\Users\\pzixe\\Desktop\\1.txt"
+      "commandName": "Project"
     }
   }
 }

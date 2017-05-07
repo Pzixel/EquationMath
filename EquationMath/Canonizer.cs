@@ -15,8 +15,8 @@ namespace EquationMath
 			}
 
 			var equalityToken = equalityTokens.Single();
-			var tokensBeforeEqualiToken = tokens.TakeWhile(token => token != equalityToken);
-			var tokensAfterEqualityToken = tokens.SkipWhile(token => token != equalityToken).Skip(1);
+			var tokensBeforeEqualiToken = tokens.TakeWhile(token => !ReferenceEquals(token, equalityToken));
+			var tokensAfterEqualityToken = tokens.SkipWhile(token => !ReferenceEquals(token, equalityToken)).Skip(1);
 
 			var result = new List<IToken>(tokens.Count + 5);
 			result.AddRange(tokensBeforeEqualiToken);

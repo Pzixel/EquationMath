@@ -13,18 +13,24 @@ namespace EquationMath
 			string inputWithoutSpaces = input.Replace(" ", string.Empty);
 			var numberBuffer = new StringBuilder();
 			var termBuffer = new StringBuilder();
+			bool lastTermWasOperator = false;
 			foreach (char c in inputWithoutSpaces)
 			{
 				switch (c)
 				{
 					case var _ when IsTerm(c, termBuffer):
 						termBuffer.Append(c);
+						lastTermWasOperator = false;
 						break;
 					case decimalSeparator:
 					case var _ when IsDigit(c):
 						numberBuffer.Append(c);
+						lastTermWasOperator = false;
 						break;
 					case var _ when IsOperator(c):
+						if (lastTermWasOperator)
+							throw new ArgumentException($"Expected operand but found operator '{c}'", nameof(input));
+						lastTermWasOperator = true;
 						if (numberBuffer.Length > 0 || termBuffer.Length > 0)
 							yield return new Term(EmptyNumberBufferAsLiteral(numberBuffer), EmptyTermBufferAsTerm(termBuffer));
 						yield return new Operator(c);

@@ -43,12 +43,12 @@ namespace EquationMath
 				else if (token is RightParenthesis)
 				{
 					if (leftParenthesisCount == 0)
-						throw new ArgumentException("Right parenthesis is before left one");
+						throw new InvalidOperationException("Right parenthesis is placed before the left one");
 					leftParenthesisCount--;
 				}
 			}
 			if (leftParenthesisCount > 0)
-				throw new ArgumentException($"{leftParenthesisCount} left parenthesis are not balanced");
+				throw new InvalidOperationException($"{leftParenthesisCount} left parenthesis are not balanced");
 		}
 	}
 }
