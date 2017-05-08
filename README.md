@@ -1,4 +1,6 @@
 # EquationMath
+[![Build status](https://ci.appveyor.com/api/projects/status/phreo8v5ku8e5h1u?svg=true&retina=true)](https://ci.appveyor.com/project/Pzixel/equationmath)
+
 Реализация следующего тестового задания:
 
 Напишите программу на C#, которая приводит уравнение к каноническому виду: приводит подобные слагаемые и приравнивает сумму к нулю.
